@@ -1,16 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { useState } from 'react'
+import ReactDOM from 'react-dom'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <App />,
-  document.getElementById('root')
-);
+const App = () => {
+  const [ bueno, setLeft] = useState(0)
+  const [neutral, setRight] = useState(0)
+  const [malo, setMalo] = useState(0)
+  const [total, settotal ] = useState(0)
+  const [porciento, setpor ] = useState(0)
+  return (
+    <div>
+      <p>Reseñas</p>
+      <button onClick={() => (setLeft(bueno + 1))(settotal(total + 1))}>
+        bueno
+      </button>
+      <button onClick={() => setRight(neutral + 1)(settotal(total + 1))}>
+        neutral
+      </button>
+      <button onClick={() => setMalo(malo + 1)(settotal(total + 1))}>
+        malo
+      </button>
+      <button onClick = {() =>(setpor(100*(bueno/total)))}>%</button>
+      <p>Estadisticas
+      </p>
+      <p>bueno {bueno}</p> <p> neutral {neutral}
+      </p> <p>malo {malo}</p> <p>total {total}</p> <p>positivo {porciento}%</p>
+    </div>
+  )
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const rootElement = document.getElementById('root')
+
+ReactDOM.render(<App />, rootElement);
